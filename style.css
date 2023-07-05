@@ -58,18 +58,17 @@
     
 }
 
-.auxButton {
+.greyButton  {
     background-color: #9e9e9e;
 }
 
-.smallButton.opButton {
+.smallButton.orangeButton {
     background-color: #ff9900;
     color: white;
     font-size: 36px;
 }
 
-.numButton,
-.decimalButton {
+.darkButton {
     background-color: #3d3c3c;
     color: white;
 }
