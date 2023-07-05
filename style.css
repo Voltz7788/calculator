@@ -1,0 +1,44 @@
+@font-face {
+    font-family: Inter;
+    src: url(./fonts/Inter-VariableFont_slnt\,wght.ttf);
+}
+
+.background {
+    
+    margin: auto;
+    margin-top: 60px;
+
+    width: 312px;
+    height: 675px;
+
+    background-color: black;
+    border-radius: 50px;
+}
+
+.display {
+    color: white;
+    font-family: Inter;
+    font-weight: 300;
+    font-size: 64px;
+    text-align: end;
+    margin-right: 30px;
+    padding-top: 150px;
+    margin-bottom: 24px;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.smallButton {
+    width: 60px;
+    height: 60px;
+}
+
+.largeButton {
+    width: 132px;
+    height: 60px;
+}

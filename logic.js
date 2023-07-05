@@ -10,4 +10,11 @@ function operate(operator, num1, num2) {
     };
 };
 
-console.log(operate("/", 1, 2));
+
+function startApp() {
+    let num1;
+    let num2;
+    let operator;
+
+
+};
