@@ -1,6 +1,6 @@
 let num1 = "";
 let num2 = "";
-let currentResult = "";
+let currentResult = "0";
 let operator = "";
 
 let num1Available = true;
@@ -9,26 +9,24 @@ let num2Available = true;
 let decimalAvailable = true;
 
 function operate(operator, num1, num2) {
+    let display = document.querySelector(".display");
     num1 = Number(num1);
     num2 = Number(num2);
     if (operator === "+") {
         currentResult = num1 + num2;
-        console.log(currentResult)
     } else if (operator === "-") {
         currentResult = num1 - num2;
-        console.log(currentResult)
     } else if (operator === "*") {
         currentResult = num1 * num2;
-        console.log(currentResult)
     } else if (operator === "/") {
         currentResult = num1 / num2;
         checkDivideByZero()
-        console.log(currentResult)
     } else if (operator === "%") {
         currentResult = num1 % num2;
-        console.log(currentResult)
     } else {
-        console.log(currentResult)
+        if (num1 === "" || num2 === "") {
+            currentResult = "0";
+        };
     };
 };
 
@@ -40,15 +38,12 @@ function setUpNumberButtons() {
             if (operator === "=") {
                 clear();
             }
-
             if (num1Available) {
                 num1 += button.id;
                 display.textContent = num1;
-                console.log(num1);
             } else if (num2Available) {
                 num2 += button.id;
                 display.textContent = num2;
-                console.log(num2);
             };
         });
     });
@@ -60,11 +55,11 @@ function setUpOperatorButtons() {
     operatorButtons.forEach(button => {
         button.addEventListener("click", () => {
             
-            if (num1Available) {
+            if (num1Available && button.id !== "=") {
                 num1Available = false;
                 operator = button.id;
                 decimalAvailable = true;
-            } else if (num2Available) {
+            } else if (num2Available && num1 !== "") {
                 operate(operator, num1, num2)
                 decimalAvailable = true;
                 display.textContent = currentResult;
@@ -81,7 +76,6 @@ function setUpDecimalButton() {
     decimalButton.addEventListener("click", () => {
         if (decimalAvailable && num1Available) {
             num1 += decimalButton.id;
-            console.log(num1)
             decimalAvailable = false;
         } else if (decimalAvailable && num2Available) {
             num2 += decimalButton.id;
@@ -92,7 +86,7 @@ function setUpDecimalButton() {
 
 function checkDivideByZero() {
     if (num2 === "0") {
-        currentResult = "Invalid";
+        currentResult = "Stupid";
         clear()
     };
 };
@@ -110,6 +104,7 @@ function clear() {
     num1 = "";
     num2 = "";
     operator = "";
+    currentResult = "0";
 
     num1Available = true;
     num2Available = true;
@@ -125,15 +120,12 @@ function setUpFlipButton() {
         if (currentResult !== "") {
             currentResult = -currentResult;
             display.textContent = currentResult;
-            console.log(currentResult)
         } else if (num1Available) {
             num1 = -num1;
             display.textContent = num1;
-            console.log(num1)
         } else if (num2Available) {
             num2 = -num2;
             display.textContent(num2);
-            console.log(num2)
         };
     }); 
 };
@@ -146,4 +138,5 @@ function startApp() {
     setUpClearButton()
     setUpFlipButton()
 };
+
 startApp()
