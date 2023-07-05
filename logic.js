@@ -40,6 +40,12 @@ function operate(operator, num1, num2) {
             document.getElementById("overlay").style.display = "block";
         }, 800);
         
+        setTimeout(() => {
+            document.getElementById("overlay").style.display = "none";
+            display.textContent = "0";
+            display.style.fontSize = "64px";
+            clear()
+        }, 61000);  
     };
 };
 
