@@ -35,6 +35,10 @@ function setUpNumberButtons() {
     let numberButtons = document.querySelectorAll(".numButton");
     numberButtons.forEach(button => {
         button.addEventListener("click", () => {
+            if (operator === "=") {
+                clear();
+            }
+
             if (num1Available) {
                 num1 += button.id;
                 console.log(num1);
@@ -87,19 +91,19 @@ function setUpDecimalButton() {
 
 function setUpClearButton() {
     let clearButton = document.querySelector("#AC");
-    clearButton.addEventListener("click", () => {
-        num1 = "";
-        num2 = "";
-        operator = "";
-
-        num1Available = true;
-        num2Available = true;
-
-        decimalAvailable = true;
-    });
+    clearButton.addEventListener("click", clear());
 };
 
+function clear() {
+    num1 = "";
+    num2 = "";
+    operator = "";
 
+    num1Available = true;
+    num2Available = true;
+
+    decimalAvailable = true;
+};
 
 
 function startApp() {
