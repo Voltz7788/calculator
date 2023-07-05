@@ -12,8 +12,10 @@ function operate(operator, num1, num2) {
     let display = document.querySelector(".display");
     num1 = Number(num1);
     num2 = Number(num2);
+    
     if (operator === "+") {
         currentResult = num1 + num2;
+        console.log(currentResult)
     } else if (operator === "-") {
         currentResult = num1 - num2;
     } else if (operator === "*") {
@@ -24,9 +26,20 @@ function operate(operator, num1, num2) {
     } else if (operator === "%") {
         currentResult = num1 % num2;
     } else {
-        if (num1 === "" || num2 === "") {
+        if  (num1 === "" || num2 === "") {
             currentResult = "0";
         };
+    };
+
+    if (num1 === 2099 || num2 === 2099 || currentResult === 2099) {
+        let audio = document.getElementById("spiderman");
+        audio.play()
+        display.style.fontSize = "32px";
+        currentResult = "CANON DISRUPTED";
+        setTimeout(() => {
+            document.getElementById("overlay").style.display = "block";
+        }, 800);
+        
     };
 };
 
