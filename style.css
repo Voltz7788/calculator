@@ -3,6 +3,8 @@
     src: url(./fonts/Inter-VariableFont_slnt\,wght.ttf);
 }
 
+
+
 .background {
     
     margin: auto;
@@ -36,9 +38,47 @@
 .smallButton {
     width: 60px;
     height: 60px;
+    text-align: center;
 }
 
 .largeButton {
     width: 132px;
     height: 60px;
+    text-align: start;
+    padding-left: 24px;
+}
+
+.smallButton,
+.largeButton {
+    font-family: Inter;
+    border-radius: 100px;
+    border: none;
+
+    font-size: 30px;
+    
+}
+
+.auxButton {
+    background-color: #9e9e9e;
+}
+
+.smallButton.opButton {
+    background-color: #ff9900;
+    color: white;
+    font-size: 36px;
+}
+
+.numButton {
+    background-color: #3d3c3c;
+    color: white;
+}
+
+
+.whiteBar {
+    background-color: white;
+    width: 100px;
+    height: 4px;;
+    border-radius: 20px;
+    margin: auto;
+    margin-top: 45px;
 }
