@@ -1,6 +1,6 @@
 let num1 = "";
 let num2 = "";
-let currentResult = "0";
+let currentResult = 0;
 let operator = "";
 
 let num1Available = true;
@@ -27,7 +27,7 @@ function operate(operator, num1, num2) {
         currentResult = num1 % num2;
     } else {
         if  (num1 === "" || num2 === "") {
-            currentResult = "0";
+            currentResult = 0;
         };
     };
 
@@ -123,7 +123,7 @@ function clear() {
     num1 = "";
     num2 = "";
     operator = "";
-    currentResult = "0";
+    currentResult = 0;
 
     num1Available = true;
     num2Available = true;
@@ -136,16 +136,18 @@ function setUpFlipButton() {
     let flipButton = document.querySelector("#flip");
 
     flipButton.addEventListener("click",() => {
-        if (currentResult !== "") {
+        if (currentResult !== 0) {
             currentResult = -currentResult;
             display.textContent = currentResult;
         } else if (num1Available) {
             num1 = -num1;
+            console.log(num1)
             display.textContent = num1;
         } else if (num2Available) {
             num2 = -num2;
-            display.textContent(num2);
+            display.textContent = num2;
         };
+        
     }); 
 };
 
