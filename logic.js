@@ -6,6 +6,8 @@ let operator = "";
 let num1Available = true;
 let num2Available = true;
 
+let decimalAvailable = true;
+
 function operate(operator, num1, num2) {
     num1 = Number(num1);
     num2 = Number(num2);
@@ -49,11 +51,14 @@ function setUpOperatorButtons() {
             if (num1Available) {
                 num1Available = false;
                 operator = button.id;
+                decimalAvailable = true;
+                
                 
             } else if (num2Available) {
                 
                 // num2Available = false;
                 operate(operator, num1, num2)
+                decimalAvailable = true;
                 operator = button.id;
                 num1 = currentResult;
                 num2 = "";
@@ -62,8 +67,33 @@ function setUpOperatorButtons() {
     });
 };
 
-function setUpClearButton() {
+function setUpDecimalButton() {
+    let decimalButton = document.querySelector(".decimalButton");
+    decimalButton.addEventListener("click", () => {
+        if (decimalAvailable && num1Available) {
+            num1 += decimalButton.id;
+            console.log(num1)
+            decimalAvailable = false;
+        } else if (decimalAvailable && num2Available) {
+            num2 += decimalButton.id;
+            decimalAvailable = false;
+        }
+    });
+};
 
+
+function setUpClearButton() {
+    let clearButton = document.querySelector("#AC");
+    clearButton.addEventListener("click", () => {
+        num1 = "";
+        num2 = "";
+        operator = "";
+
+        num1Available = true;
+        num2Available = true;
+
+        decimalAvailable = true;
+    });
 };
 
 
@@ -72,6 +102,7 @@ function setUpClearButton() {
 function startApp() {
     setUpNumberButtons()
     setUpOperatorButtons()
+    setUpDecimalButton()
     setUpClearButton()
 };
 

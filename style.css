@@ -68,7 +68,8 @@
     font-size: 36px;
 }
 
-.numButton {
+.numButton,
+.decimalButton {
     background-color: #3d3c3c;
     color: white;
 }
