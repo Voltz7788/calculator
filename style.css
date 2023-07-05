@@ -3,7 +3,9 @@
     src: url(./fonts/Inter-VariableFont_slnt\,wght.ttf);
 }
 
-
+body {
+    background-color: #7d7d7d;
+}
 
 .background {
     

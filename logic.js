@@ -15,7 +15,6 @@ function operate(operator, num1, num2) {
     
     if (operator === "+") {
         currentResult = num1 + num2;
-        console.log(currentResult)
     } else if (operator === "-") {
         currentResult = num1 - num2;
     } else if (operator === "*") {
