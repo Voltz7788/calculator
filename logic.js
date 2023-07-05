@@ -22,6 +22,7 @@ function operate(operator, num1, num2) {
         console.log(currentResult)
     } else if (operator === "/") {
         currentResult = num1 / num2;
+        checkDivideByZero()
         console.log(currentResult)
     } else if (operator === "%") {
         currentResult = num1 % num2;
@@ -33,6 +34,7 @@ function operate(operator, num1, num2) {
 
 function setUpNumberButtons() {
     let numberButtons = document.querySelectorAll(".numButton");
+    let display = document.querySelector(".display");
     numberButtons.forEach(button => {
         button.addEventListener("click", () => {
             if (operator === "=") {
@@ -41,9 +43,11 @@ function setUpNumberButtons() {
 
             if (num1Available) {
                 num1 += button.id;
+                display.textContent = num1;
                 console.log(num1);
             } else if (num2Available) {
                 num2 += button.id;
+                display.textContent = num2;
                 console.log(num2);
             };
         });
@@ -51,6 +55,7 @@ function setUpNumberButtons() {
 };
 
 function setUpOperatorButtons() {
+    let display = document.querySelector(".display");
     let operatorButtons = document.querySelectorAll(".opButton");
     operatorButtons.forEach(button => {
         button.addEventListener("click", () => {
@@ -59,13 +64,10 @@ function setUpOperatorButtons() {
                 num1Available = false;
                 operator = button.id;
                 decimalAvailable = true;
-                
-                
             } else if (num2Available) {
-                
-                // num2Available = false;
                 operate(operator, num1, num2)
                 decimalAvailable = true;
+                display.textContent = currentResult;
                 operator = button.id;
                 num1 = currentResult;
                 num2 = "";
@@ -88,10 +90,20 @@ function setUpDecimalButton() {
     });
 };
 
+function checkDivideByZero() {
+    if (num2 === "0") {
+        currentResult = "Invalid";
+        clear()
+    };
+};
 
 function setUpClearButton() {
+    let display = document.querySelector(".display");
     let clearButton = document.querySelector("#AC");
-    clearButton.addEventListener("click", clear());
+    clearButton.addEventListener("click", () => {
+        clear()
+        display.textContent = 0;
+    });
 };
 
 function clear() {
@@ -105,12 +117,33 @@ function clear() {
     decimalAvailable = true;
 };
 
+function setUpFlipButton() {
+    let display = document.querySelector(".display");
+    let flipButton = document.querySelector("#flip");
+
+    flipButton.addEventListener("click",() => {
+        if (currentResult !== "") {
+            currentResult = -currentResult;
+            display.textContent = currentResult;
+            console.log(currentResult)
+        } else if (num1Available) {
+            num1 = -num1;
+            display.textContent = num1;
+            console.log(num1)
+        } else if (num2Available) {
+            num2 = -num2;
+            display.textContent(num2);
+            console.log(num2)
+        };
+    }); 
+};
+
 
 function startApp() {
     setUpNumberButtons()
     setUpOperatorButtons()
     setUpDecimalButton()
     setUpClearButton()
+    setUpFlipButton()
 };
-
 startApp()
