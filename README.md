@@ -1,1 +1,3 @@
 # calculator
+
+Easter egg: type in 2099 and see what happens...
