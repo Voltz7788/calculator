@@ -150,7 +150,6 @@ function setUpFlipButton() {
     }); 
 };
 
-
 function startApp() {
     setUpNumberButtons()
     setUpOperatorButtons()
